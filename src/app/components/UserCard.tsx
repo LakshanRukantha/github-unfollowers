@@ -13,17 +13,17 @@ interface UserCardProps {
 const UserCard: React.FC<UserCardProps> = ({ user }: any) => {
   return (
     <div className="flex flex-col bg-lighterBlue p-2 border">
-      <a href={user.html_url} target="_blank">
+      <a href={user.html_url} target="_blank" title={user.login}>
         <Image
-          className="block mx-auto"
+          className="block w-20 h-20 md:w-36 md:h-36 mx-auto"
           src={user.avatar_url}
           alt={user.login}
-          height={140}
-          width={140}
+          height={80}
+          width={80}
         />
       </a>
       <a
-        className="max-w-[140px] truncate"
+        className="max-w-[80px] md:max-w-[100px] truncate"
         href={user.html_url}
         target="_blank"
       >

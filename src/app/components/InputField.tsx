@@ -96,7 +96,7 @@ const InputField = ({ text = "Search" }) => {
           </div>
         </div>
         {username && (
-          <div className="flex items-center justify-evenly gap-2 flex-wrap self-center w-full">
+          <div className="flex items-center justify-evenly gap-2 md:gap-4 flex-wrap self-center w-full">
             {notFollowingBack.map((user) => (
               <UserCard key={user.login} user={user} />
             ))}
