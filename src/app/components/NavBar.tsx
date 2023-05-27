@@ -5,7 +5,7 @@ const repoUrl = "https://github.com/LakshanRukantha/github-unfollowers";
 
 const NavBar = () => {
   return (
-    <div className="flex px-4 py-2 items-center justify-between bg-bgSecondary shadow-sm">
+    <div className="flex fixed max-w-5xl w-full px-4 py-2 items-center justify-between bg-bgSecondary shadow-sm">
       <h1 className="text-4xl font-bold text-textPrimary">
         <Link href="#">GitTrack</Link>
       </h1>
