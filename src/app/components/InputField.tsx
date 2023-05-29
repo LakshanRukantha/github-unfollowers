@@ -4,10 +4,25 @@ import { Loading } from "@nextui-org/react";
 import { useState } from "react";
 import axios from "axios";
 import UserCard from "./UserCard";
+import DisplayUser from "./DisplayUser";
 
 interface User {
   login: string;
   avatar_url: string;
+}
+
+interface DisplayUserProps {
+  avatar_url: string;
+  name?: string;
+  bio?: string;
+  blog?: string;
+  email?: string;
+  location?: string;
+  followers?: number;
+  following?: number;
+  public_repos?: number;
+  total_private_repos?: number;
+  twitter_username?: string;
 }
 
 const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
@@ -16,6 +31,7 @@ const InputField = ({ text = "Search" }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [notFollowingBack, setNotFollowingBack] = useState<User[]>([]);
+  const [displayUser, setDisplayUser] = useState<DisplayUserProps[]>([]);
 
   const fetchFollowersAndFollowing = async () => {
     setIsLoading(true);
@@ -26,17 +42,23 @@ const InputField = ({ text = "Search" }) => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const [followersResponse, followingResponse] = await Promise.all([
-          axios.get<User[]>(
-            `https://api.github.com/users/${username}/followers`,
-            config
-          ),
-          axios.get<User[]>(
-            `https://api.github.com/users/${username}/following`,
-            config
-          ),
-        ]);
+        const [displayUser, followersResponse, followingResponse] =
+          await Promise.all([
+            axios.get<User[]>(
+              `https://api.github.com/users/${username}`,
+              config
+            ),
+            axios.get<User[]>(
+              `https://api.github.com/users/${username}/followers`,
+              config
+            ),
+            axios.get<User[]>(
+              `https://api.github.com/users/${username}/following`,
+              config
+            ),
+          ]);
 
+        setDisplayUser(displayUser.data);
         const followersData = followersResponse.data;
         const followingData = followingResponse.data;
 
@@ -94,6 +116,15 @@ const InputField = ({ text = "Search" }) => {
               )}
             </button>
           </div>
+        </div>
+        {displayUser.length != 0 && <DisplayUser user={displayUser} />}
+        <div className="mb-12 md:px-4 w-full pl-4 border-4 border-l-lightBlue border-y-0 border-r-0">
+          <h2 className=" text-lg">
+            GitHub Users Who Don&apos;t Follow You Back
+          </h2>
+          <p className="opacity-80 text-sm">
+            Take Action: Unfollow or Visit User Account with a Click
+          </p>
         </div>
         {username && (
           <div className="flex items-center justify-evenly gap-2 md:gap-4 flex-wrap self-center w-full">
