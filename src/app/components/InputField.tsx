@@ -23,7 +23,7 @@ const InputField = ({ text = "Search" }) => {
       if (username) {
         const config = {
           headers: {
-            Authorization: `Bearer ${token}`, // Replace YOUR_ACCESS_TOKEN with your actual GitHub access token
+            Authorization: `Bearer ${token}`,
           },
         };
         const [followersResponse, followingResponse] = await Promise.all([
