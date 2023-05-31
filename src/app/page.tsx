@@ -1,7 +1,10 @@
 "use client";
+import Script from "next/script";
 import Footer from "./components/Footer";
 import InputField from "./components/InputField";
 import NavBar from "./components/NavBar";
+
+const measurementId = "G-T10VKVFTVS";
 
 export default function Home() {
   return (
@@ -14,6 +17,19 @@ export default function Home() {
           url="https://lakshanrukantha.github.io/"
         />
       </div>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+      />
+
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${measurementId}');
+        `}
+      </Script>
     </main>
   );
 }
