@@ -81,7 +81,7 @@ const InputField = ({ text = "Search" }) => {
 
   return (
     <>
-      <div className="relative min-h-[92vh] md:min-h-[94.7vh] w-full px-4">
+      <div className="relative min-h-[92vh] w-full px-4">
         <div className="flex w-full flex-col sm:flex-row mx-auto mt-28 justify-center max-w-xl my-14">
           <div className="flex bg-bgSecondary w-full">
             <AiOutlineUser className="text-5xl h-10 w-11 p-2 outline outline-lightBlue outline-1 text-textPrimary" />
