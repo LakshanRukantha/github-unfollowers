@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import UserCard from "./UserCard";
 import DisplayUser from "./DisplayUser";
+import Title from "./Title";
 
 interface User {
   login: string;
@@ -80,8 +81,8 @@ const InputField = ({ text = "Search" }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center gap-4 w-full px-4">
-        <div className="flex w-full flex-col sm:flex-row items-center self-center mt-32 justify-center max-w-xl my-14">
+      <div className="relative min-h-[92vh] md:min-h-[94.7vh] w-full px-4">
+        <div className="flex w-full flex-col sm:flex-row mx-auto mt-28 justify-center max-w-xl my-14">
           <div className="flex bg-bgSecondary w-full">
             <AiOutlineUser className="text-5xl h-10 w-11 p-2 outline outline-lightBlue outline-1 text-textPrimary" />
             <input
@@ -118,14 +119,13 @@ const InputField = ({ text = "Search" }) => {
           </div>
         </div>
         {displayUser.length != 0 && <DisplayUser user={displayUser} />}
-        <div className="mb-12 md:px-4 w-full pl-4 border-4 border-l-lightBlue border-y-0 border-r-0">
-          <h2 className=" text-lg">
-            GitHub Users Who Don&apos;t Follow You Back
-          </h2>
-          <p className="opacity-80 text-sm">
-            Take Action: Unfollow or Visit User Account with a Click
-          </p>
-        </div>
+        {displayUser.length != 0 && (
+          <Title
+            title="GitHub Users Who Don't Follow You Back"
+            subtitle="Take Action: Unfollow or Visit User Account with a Click"
+          />
+        )}
+
         {username && (
           <div className="flex items-center justify-evenly gap-2 md:gap-4 flex-wrap self-center w-full">
             {notFollowingBack.map((user) => (

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function DisplayUser({ user }: any) {
-  console.log(user);
   const name =
     user.name !== undefined && user.name !== null && user.name !== ""
       ? user.name
@@ -62,7 +61,7 @@ export default function DisplayUser({ user }: any) {
   return (
     <div className="flex w-full flex-col md:max-h-72 md:flex-row gap-4 p-4 items-center justify-between border border-lightBlue mb-12">
       <Image
-        className="w-auto h-60 md:h-full"
+        className="w-auto h-60"
         src={user.avatar_url}
         height="300"
         width="300"

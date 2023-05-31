@@ -27,7 +27,7 @@ const NavBar = () => {
   }, [starCount]);
 
   return (
-    <div className="flex fixed max-w-5xl w-full px-4 py-2 items-center justify-between bg-bgSecondary shadow-sm">
+    <div className="flex z-10 fixed max-w-5xl w-full px-4 py-2 items-center justify-between bg-bgSecondary shadow-sm">
       <h1 className="text-4xl font-bold text-textPrimary">
         <Link href="#">GitTrack</Link>
       </h1>
