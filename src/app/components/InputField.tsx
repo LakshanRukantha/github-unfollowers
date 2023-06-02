@@ -125,8 +125,7 @@ const InputField = ({ text = "Search" }) => {
             subtitle="Take Action: Unfollow or Visit User Account with a Click"
           />
         )}
-
-        {username && (
+        {notFollowingBack.length > 0 && (
           <div className="flex items-center justify-evenly gap-2 md:gap-4 flex-wrap self-center w-full">
             {notFollowingBack.map((user) => (
               <UserCard key={user.login} user={user} />
