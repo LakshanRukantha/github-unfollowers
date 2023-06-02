@@ -95,7 +95,13 @@ export default function DisplayUser({ user }: any) {
               isUndefined(user.blog) ? "italic opacity-50" : ""
             }`}
           >
-            {blog}
+            {isUndefined(user.blog) ? (
+              "Not Found"
+            ) : (
+              <Link className="text-blue-500" href={blog} target="_blank">
+                {blog}
+              </Link>
+            )}
           </span>
         </h2>
         <h2 className="font-semibold">
@@ -165,9 +171,13 @@ export default function DisplayUser({ user }: any) {
               isUndefined(user.twitter_username) ? "italic opacity-50" : ""
             }`}
           >
-            {twitter && !isUndefined ? (
-              <Link href={`https://twitter.com/${twitter}`} target="_blank">
-                {twitter}
+            {!isUndefined(user.twitter_username) ? (
+              <Link
+                className="text-blue-500"
+                href={`https://twitter.com/${twitter}`}
+                target="_blank"
+              >
+                {`@${twitter}`}
               </Link>
             ) : (
               "Not Found"

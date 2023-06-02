@@ -26,7 +26,7 @@ interface DisplayUserProps {
   twitter_username?: string;
 }
 
-const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN; //Github token
 
 const InputField = ({ text = "Search" }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
