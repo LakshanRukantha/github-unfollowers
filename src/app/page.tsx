@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import InputField from "./components/InputField";
 import NavBar from "./components/NavBar";
 
-const measurementId = "G-T10VKVFTVS";
+const measurementId = process.env.NEXT_PUBLIC_MEASUREMENT_ID;
 
 export default function Home() {
   return (
