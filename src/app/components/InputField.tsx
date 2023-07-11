@@ -3,6 +3,8 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Loading } from "@nextui-org/react";
 import { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import UserCard from "./UserCard";
 import DisplayUser from "./DisplayUser";
 import Title from "./Title";
@@ -71,6 +73,7 @@ const InputField = ({ text = "Search" }) => {
       }
     } catch (error: any) {
       console.error("Error fetching data:", error.message);
+      toast.error("No user found", { position: toast.POSITION.BOTTOM_RIGHT });
     }
     setIsLoading(false);
   };
@@ -132,6 +135,7 @@ const InputField = ({ text = "Search" }) => {
             ))}
           </div>
         )}
+        <ToastContainer />
       </div>
     </>
   );
